@@ -186,12 +186,10 @@ public class DeluxeMenusCommands implements CommandExecutor {
                     holder.getTypedArgs(),
                     true,
                     true
-                );
-
-            EntityScheduler scheduler = EntityScheduler.get(plugin, holder.getViewer());
+            );
 
             if (action.hasDelay()) {
-                scheduler.runLater(actionTask, action.getDelay(holder));
+                actionTask.runDelayed(plugin, action.getDelay(holder));
 
                 plugin.sms(
                         sender,
@@ -201,7 +199,7 @@ public class DeluxeMenusCommands implements CommandExecutor {
                 return true;
             }
 
-            scheduler.run(actionTask);
+            actionTask.run(plugin);
 
             plugin.sms(
                     sender,

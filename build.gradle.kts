@@ -1,6 +1,6 @@
 plugins {
     java
-    id("com.github.johnrengelman.shadow") version("8.1.1")
+    id("io.github.goooler.shadow") version "8.1.7"
     id("com.github.ben-manes.versions") version "0.48.0"
 }
 
@@ -14,7 +14,8 @@ version = "$majorVersion-$minorVersion"
 
 repositories {
     mavenCentral()
-    maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+    //maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+    maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
     maven("https://repo.glaremasters.me/repository/public/")
     maven("https://nexus.phoenixdevt.fr/repository/maven-public/")
@@ -22,7 +23,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly(libs.spigot)
+    compileOnly("io.papermc.paper:paper-api:1.20.6-R0.1-SNAPSHOT")
+    //compileOnly(libs.spigot)
 
     compileOnly(libs.vault)
     compileOnly(libs.authlib)
@@ -55,8 +57,8 @@ tasks {
         archiveFileName.set("DeluxeMenus-${rootProject.version}.jar")
     }
     java {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     processResources {

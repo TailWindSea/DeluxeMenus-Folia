@@ -1505,14 +1505,12 @@ public class DeluxeMenusConfig {
                                 holder.parsePlaceholdersAfterArguments()
                         );
 
-                        EntityScheduler scheduler = EntityScheduler.get(plugin, holder.getViewer());
-
                         if (action.hasDelay()) {
-                            scheduler.runLater(actionTask, action.getDelay(holder));
+                            actionTask.runDelayed(plugin, action.getDelay(holder));
                             continue;
                         }
 
-                        scheduler.run(actionTask);
+                        actionTask.run(plugin);
                     }
                 }
             };
